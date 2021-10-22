@@ -72,7 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onViewPersonButtonClick(View view) {
         Intent intent = new Intent(this, DisplayPersonActivity.class);
-        intent.putExtra("myPerson", person.getMessage());
+        if (person != null) {
+            intent.putExtra("myPerson", person.getMessage());
+        } else {
+            intent.putExtra("myPerson", "No one has logged time!");
+        }
         startActivity(intent);
     }
 }
