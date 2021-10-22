@@ -2,6 +2,7 @@ package com.example.mytimelogapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText TimeEditText;
     private EditText DateEditText;
     private EditText TimeOutEditText;
+    private Person person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         String personTimeOut = TimeOutEditText.getText().toString();
 
         //Create Person object from the information above
-        Person person;
         String message;
         if (!personName.trim().equals("")){ //if name is not empty, object will be created
             //convert str to number
@@ -67,5 +68,11 @@ public class MainActivity extends AppCompatActivity {
         //Displays the persons info using a Toast
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 
+    }
+
+    public void onViewPersonButtonClick(View view) {
+        Intent intent = new Intent(this, DisplayPersonActivity.class);
+        intent.putExtra("myPerson", person.getMessage());
+        startActivity(intent);
     }
 }
