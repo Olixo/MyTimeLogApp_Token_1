@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">MyTimeLogApp</string>
+    <string name="app_name">My Time Log App</string>
+
+    <string name="hint_date">dd/mm/yy</string>
 </resources>
