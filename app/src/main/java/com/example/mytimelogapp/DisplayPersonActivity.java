@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class DisplayPersonActivity extends AppCompatActivity {
     private TextView displayPersonTextView;
 
@@ -16,8 +18,8 @@ public class DisplayPersonActivity extends AppCompatActivity {
 
         displayPersonTextView = findViewById(R.id.displayPersonTextView);
         Intent intent = getIntent();
-        String personDetails = intent.getStringExtra("myPerson");
+        ArrayList<Person> personArrayList = (ArrayList<Person>) intent.getSerializableExtra("allPersons");
 
-        displayPersonTextView.setText(personDetails);
+        displayPersonTextView.setText("Number of logged times: " + personArrayList.size()); // how many people have logged time
     }
 }

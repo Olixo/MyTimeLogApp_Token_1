@@ -1,6 +1,8 @@
 package com.example.mytimelogapp;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
     // attributes
     private String name;
     private int time;
