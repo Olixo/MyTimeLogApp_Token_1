@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText NameEditText;  //link to xml EditText in onCreate()
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText DateEditText;
     private EditText TimeOutEditText;
     private Person person;
+    private ArrayList<Person> personArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         TimeEditText = findViewById(R.id.TimeEditText);
         DateEditText = findViewById(R.id.DateEditText);
         TimeOutEditText = findViewById(R.id.TimeOutEditText);
+
+        personArrayList= new ArrayList<>(); // this initializes an empty array list
     }
 
     public void onLogTimeButtonClick(View view) {
@@ -60,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             person = new Person(personName, time, date, timeout);
+            personArrayList.add(person); //<-- adds a person to the arraylist
             message = person.getMessage();
+            message += "\nThere are " + personArrayList.size() + " people who have logged their time";
         } else {
             message = "Please enter a valid Name, Time, Date and Timeout";
         }
