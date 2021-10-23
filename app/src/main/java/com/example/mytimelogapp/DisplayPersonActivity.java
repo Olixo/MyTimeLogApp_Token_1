@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,15 @@ public class DisplayPersonActivity extends AppCompatActivity {
             Person person = personArrayList.get(currentPersonIndex);
 
             displayPersonTextView.setText(person.getMessage());
+        }
+    }
+
+    public void onSaveButtonClick(View view) {
+        if (personArrayList.size()>0) {
+            Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(this, "No data to save", Toast.LENGTH_SHORT).show();
         }
     }
 }

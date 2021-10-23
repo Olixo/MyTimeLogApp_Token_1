@@ -30,4 +30,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/displayPersonTextView"
         app:layout_constraintVertical_bias="0.413" />
+
+    <Button
+        android:id="@+id/saveLogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSaveButtonClick"
+        android:text="Save Info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewNextButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
