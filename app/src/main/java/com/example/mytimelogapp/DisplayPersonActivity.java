@@ -112,12 +112,37 @@ public class DisplayPersonActivity extends AppCompatActivity {
 
             String data = new String(bytes); //converting bytes into string
 
-            Toast.makeText(getBaseContext(), data, Toast.LENGTH_SHORT).show();
+            String[] allPeople = data.split("\n");
+
+            if (allPeople.length>0) {
+                personArrayList.clear(); //clears the arraylist
+                for (int i = 0; i < allPeople.length; i++) {
+                    //for each line (1 person), split the string into appropriate attributes and build a person object
+                    //add the person object to ArrayList
+                    String[] component = allPeople[i].split("\\|");
+                    String name = component[0];
+                    int time = Integer.parseInt(component[1]);
+                    int date = Integer.parseInt(component[2]);
+                    int timeout = Integer.parseInt(component[3]);
+
+                    Person person = new Person(name, time, date, timeout);
+
+                    personArrayList.add(person);
+                }
+
+                Toast.makeText(getBaseContext(), data, Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(getBaseContext(), "No logs loaded!!", Toast.LENGTH_SHORT).show();
+            }
 
         } catch (Exception e) {
             Log.d(TAG, "L");
             e.printStackTrace();
         }
+
+        finish();
+        startActivity(getIntent()); //refresh
 
     }
 }
