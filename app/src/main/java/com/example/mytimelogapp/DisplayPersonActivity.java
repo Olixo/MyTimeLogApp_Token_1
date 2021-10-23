@@ -67,20 +67,30 @@ public class DisplayPersonActivity extends AppCompatActivity {
             try {
                 outputStream = new FileOutputStream(file);
                 //creating a stream to connect to file object
-                int numPeople = personArrayList.size();
-                String data = "Number of people: " + numPeople;
-                //prepare the information to write
 
-                outputStream.write(data.getBytes());
+
+                String data = "";
+                //prepare the information to write
+                for (Person person: personArrayList) {
+                    data = person.getName() + "|";
+                    data += person.getTime() + "|";
+                    data += person.getDate() + "|";
+                    data += person.getTimeOut() +"\n";
+                    outputStream.write(data.getBytes());
+                }
+
+
                 //convert to bytes and write to outputstream
                 Log.d(TAG, "SAVING SUCCESS!!");
+                Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
                 outputStream.close();
 
             } catch (Exception e) {
                 Log.d(TAG, "WRITING FILE UNSUCCSESSFUL!!");
+                Toast.makeText(this, "FAILURE TO WRITE FILE!!", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
             }
-            Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
+
 
         } else {
             Toast.makeText(this, "No data to save", Toast.LENGTH_SHORT).show();
