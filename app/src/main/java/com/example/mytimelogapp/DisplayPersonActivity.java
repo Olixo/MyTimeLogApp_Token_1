@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class DisplayPersonActivity extends AppCompatActivity {
     private TextView displayPersonTextView;
+    private ArrayList<Person>personArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,11 @@ public class DisplayPersonActivity extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList<Person> personArrayList = (ArrayList<Person>) intent.getSerializableExtra("allPersons");
 
-        displayPersonTextView.setText("Number of logged times: " + personArrayList.size()); // how many people have logged time
+        String message = "";
+        if (personArrayList.size()!=0) {
+            message = personArrayList.get(0).getMessage(); //getting first Person
+        }
+
+        displayPersonTextView.setText(message +  "\nNumber of logged times: " + personArrayList.size()); // how many people have logged time
     }
 }
