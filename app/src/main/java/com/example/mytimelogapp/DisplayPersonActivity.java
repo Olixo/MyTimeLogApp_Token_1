@@ -118,7 +118,7 @@ public class DisplayPersonActivity extends AppCompatActivity {
                 personArrayList.clear(); //clears the arraylist
                 for (int i = 0; i < allPeople.length; i++) {
                     //for each line (1 person), split the string into appropriate attributes and build a person object
-                    //add the person object to ArrayList
+                    //add the person object to ArrayListt
                     String[] component = allPeople[i].split("\\|");
                     String name = component[0];
                     int time = Integer.parseInt(component[1]);
